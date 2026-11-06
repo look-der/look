@@ -1,0 +1,17 @@
+{
+  "name": "portfolio-site",
+  "version": "1.0.0",
+  "description": "结构/设计作品展示型网站，支持文件上传与管理（作为面试简历补充）",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "multer": "^2.5.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,13 @@
+node_modules
+.git
+.gitignore
+*.log
+npm-debug.log
+.DS_Store
+.env
+
+# 运行期产生的上传与数据文件不进镜像；部署时用持久卷承载（DATA_ROOT 指向卷）
+public/uploads/*
+!public/uploads/.gitkeep
+data/*
+!data/projects.json

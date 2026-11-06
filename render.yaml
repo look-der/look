@@ -1,0 +1,22 @@
+# Render Blueprint 部署配置
+# 用法：把本仓库推到 GitHub/GitLab → Render 控制台 New → Blueprint → 选择本仓库，
+#       即可按此配置一键部署（含持久磁盘，重启不丢数据）。
+services:
+  - type: web
+    name: portfolio-site
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free                 # free 有休眠（15 分钟无访问后睡，唤醒有冷启动）；需常驻改 starter（付费）
+    region: oregon             # 可改 singapore / frankfurt / ohio 等就近区域
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ADMIN_PASSWORD
+        sync: false            # 部署后在 Render 控制台「Environment」手动填入强密码（务必改！）
+      - key: DATA_ROOT
+        value: /data           # 指向持久磁盘，重启不丢数据
+    disks:
+      - name: portfolio-data
+        mountPath: /data
+        sizeGB: 1

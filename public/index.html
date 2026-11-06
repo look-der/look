@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>作品集 · 设计展示</title>
+  <meta name="description" content="结构设计 / CAD 图纸 / 计算书作品展示——面试简历补充材料" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+<body>
+  <!-- 顶部导航 -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/">作品集<span class="brand-dot">.</span></a>
+      <nav class="nav-links">
+        <a href="#works">作品</a>
+        <a href="#about">关于</a>
+        <a class="nav-admin" href="/admin.html" title="管理后台（上传/管理文件）">管理后台</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <!-- 预留内容位：把下面的文字改成你的姓名 / 方向 -->
+      <p class="hero-kicker">结构设计 · CAD 图纸 · 计算分析</p>
+      <h1 class="hero-title">你的姓名 · 结构设计师</h1>
+      <p class="hero-sub">
+        这里是我的设计作品集，作为面试简历的补充材料。涵盖建筑结构设计、CAD 施工图与结构计算分析等成果，
+        可在线预览图纸与下载源文件。
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#works">浏览作品</a>
+        <a class="btn btn-ghost" href="#about">了解我</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 关于（预留内容位） -->
+  <section class="about" id="about">
+    <div class="section-inner">
+      <h2 class="section-title">关于我</h2>
+      <p class="about-text">
+        <!-- 预留内容位：在此介绍你的专业背景、技能与求职方向 -->
+        我是从事建筑结构设计与 CAD 制图的学生 / 工程师，熟悉钢筋混凝土楼盖、框架结构设计及 PKPM / YJK 等分析工具。
+        下方作品集按分类展示，欢迎查看具体图纸与计算书。
+      </p>
+    </div>
+  </section>
+
+  <!-- 作品区 -->
+  <section class="works" id="works">
+    <div class="section-inner">
+      <div class="works-head">
+        <h2 class="section-title">作品展示</h2>
+        <!-- 分类筛选标签，由 JS 根据 config 动态生成 -->
+        <div class="filters" id="filters"></div>
+      </div>
+      <div class="grid" id="grid">
+        <div class="loading">加载中…</div>
+      </div>
+      <p class="empty" id="empty" hidden>该分类下暂时还没有作品，去管理后台添加吧。</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="section-inner">
+      <p>© <span id="year"></span> 你的姓名 · 作品集　|　由 WorkBuddy 智能设计助手搭建</p>
+    </div>
+  </footer>
+
+  <!-- 作品详情弹窗 -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <button class="modal-close" data-close aria-label="关闭">×</button>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
