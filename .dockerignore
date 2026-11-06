@@ -9,5 +9,7 @@ npm-debug.log
 # 运行期产生的上传与数据文件不进镜像；部署时用持久卷承载（DATA_ROOT 指向卷）
 public/uploads/*
 !public/uploads/.gitkeep
+# 方案 A（展示版）：仓库内已提交的种子上传目录需打进镜像，否则线上 404
+!public/uploads/cad-drawings/
 data/*
 !data/projects.json

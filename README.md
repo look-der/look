@@ -80,9 +80,14 @@ npm start          # 启动服务
 本站带 Node 后端，需部署到「能运行 Node 的容器平台」。已为你准备好 **Dockerfile** 与 **render.yaml**，任选一种方式即可。无论哪种，**数据与上传文件都通过持久磁盘保存（重启不丢）**。
 
 ### 方式 A：Render（最易上手，推荐）
+
+> **当前仓库里的 `render.yaml` 是「展示版（方案 A）」**：不挂持久磁盘，服务直接读取仓库内已提交的内容（`data/projects.json` + `public/uploads/`，含本次新增的 CAD 示例项目），线上与本地展示完全一致。代价：后台新上传的作品在实例重启后会丢失，仅适合「展示」用途。
+>
+> 若要改为「上传持久化」版本：在 `render.yaml` 的 `envVars` 加回 `- key: DATA_ROOT  value: /data`，并在 `services` 下加回 `disks: - name: portfolio-data  mountPath: /data  sizeGB: 1` 即可。
+
 1. 把 `portfolio-site/` 整个目录推送到 GitHub / GitLab 仓库。
 2. 登录 [render.com](https://render.com) → **New** → **Blueprint** → 选择该仓库。
-3. Render 会自动读取 `render.yaml`，创建 Web 服务并挂载 1GB 持久磁盘（挂到 `/data`，由 `DATA_ROOT` 指向）。
+3. Render 会自动读取 `render.yaml`，创建 Web 服务。**展示版（当前默认）不挂磁盘**，服务读取仓库内置数据；若按上方提示改回带 `DATA_ROOT=/data` 的配置，则会挂载 1GB 持久磁盘（挂到 `/data`）。
 4. 在控制台 **Environment** 里给 `ADMIN_PASSWORD` 填一个**强密码**（必填，否则后台谁都能登）。
 5. 部署完成后，Render 给你一个 `https://xxxx.onrender.com` 域名，所有人可访问。
    - 展示页：`/`，后台：`/admin.html`。
@@ -113,8 +118,8 @@ npm start          # 启动服务
 
 ### 关于持久化（重要）
 平台容器文件系统是临时的，重启 / 重新部署会清空 `data/` 与 `uploads/`。
-本项目通过环境变量 `DATA_ROOT` 把数据与上传目录指向**持久磁盘**，部署配置里已默认挂载（Render `/data`，Railway/Fly 同理）。
-初次部署磁盘为空，**示例作品不会自动出现**，请在 `/admin.html` 添加你的第一个作品即可——之后所有新增内容都会落在持久卷上，重启不丢。
+- **展示版（当前 `render.yaml` 默认）**：不设 `DATA_ROOT`，服务读取仓库内置的 `data/projects.json` 与 `public/uploads/`（已被 `.dockerignore` 的例外规则打进镜像），所以**已提交的作品（含 CAD 示例）上线即见**，但后台新上传内容重启会丢。
+- **持久化版**：用环境变量 `DATA_ROOT` 把数据与上传目录指向**持久磁盘**（如 Render `/data`，Railway/Fly 同理）。该模式下初次部署磁盘为空，需在 `/admin.html` 手动添加第一个作品，之后所有新增内容落在持久卷上，重启不丢。
 
 > 若只想纯静态托管（GitHub Pages 等），当前结构不直接适用，需改为“拖文件进文件夹 + 手动编辑 projects.json”的静态方案，可让我帮你转换。
 
