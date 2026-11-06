@@ -1,6 +1,72 @@
 {
   "projects": [
     {
+      "id": "cad-structural-2026",
+      "title": "钢筋混凝土框架结构施工图 · 课程设计示例",
+      "category": "cad-drawings",
+      "summary": "一套完整的多层钢筋混凝土结构建筑施工图，涵盖首层 / 标准层 / 顶层平面、正 / 侧立面与两个剖面，AutoCAD 源文件（.dxf）可直接下载。",
+      "description": "本项目为一套真实的多层钢筋混凝土框架结构课程设计施工图，出图比例 1:150，按标准图层命名（A-WALL、A-AXIS、A-DIM、A-ANNO 等）组织，含轴网、尺寸标注与图签。\n\n图纸清单：\n· 01 首层平面图\n· 02 标准层平面图\n· 03 顶层平面图\n· 04 正立面图\n· 05 侧立面图\n· 06 1-1 剖面图\n· 07 2-2 剖面图\n\n所有图纸均为 AutoCAD 导出的 .dxf 源文件，可在详情页直接下载使用；下方在线预览为自动栅格化生成的 PNG，便于快速查看。",
+      "tags": [
+        "钢筋混凝土结构",
+        "建筑施工图",
+        "AutoCAD",
+        "课程设计"
+      ],
+      "date": "2026-10",
+      "cover": "/uploads/cad-drawings/cad-structural-2026/01-first-floor-plan.png",
+      "files": [
+        {
+          "name": "01-首层平面图.dxf",
+          "url": "/uploads/cad-drawings/cad-structural-2026/01-first-floor-plan.dxf",
+          "preview": "/uploads/cad-drawings/cad-structural-2026/01-first-floor-plan.png",
+          "type": "cad",
+          "size": 660899
+        },
+        {
+          "name": "02-标准层平面图.dxf",
+          "url": "/uploads/cad-drawings/cad-structural-2026/02-standard-floor-plan.dxf",
+          "preview": "/uploads/cad-drawings/cad-structural-2026/02-standard-floor-plan.png",
+          "type": "cad",
+          "size": 684390
+        },
+        {
+          "name": "03-顶层平面图.dxf",
+          "url": "/uploads/cad-drawings/cad-structural-2026/03-top-floor-plan.dxf",
+          "preview": "/uploads/cad-drawings/cad-structural-2026/03-top-floor-plan.png",
+          "type": "cad",
+          "size": 702140
+        },
+        {
+          "name": "04-正立面图.dxf",
+          "url": "/uploads/cad-drawings/cad-structural-2026/04-front-elevation.dxf",
+          "preview": "/uploads/cad-drawings/cad-structural-2026/04-front-elevation.png",
+          "type": "cad",
+          "size": 184974
+        },
+        {
+          "name": "05-侧立面图.dxf",
+          "url": "/uploads/cad-drawings/cad-structural-2026/05-side-elevation.dxf",
+          "preview": "/uploads/cad-drawings/cad-structural-2026/05-side-elevation.png",
+          "type": "cad",
+          "size": 140084
+        },
+        {
+          "name": "06-1-1剖面图.dxf",
+          "url": "/uploads/cad-drawings/cad-structural-2026/06-section-1-1.dxf",
+          "preview": "/uploads/cad-drawings/cad-structural-2026/06-section-1-1.png",
+          "type": "cad",
+          "size": 143867
+        },
+        {
+          "name": "07-2-2剖面图.dxf",
+          "url": "/uploads/cad-drawings/cad-structural-2026/07-section-2-2.dxf",
+          "preview": "/uploads/cad-drawings/cad-structural-2026/07-section-2-2.png",
+          "type": "cad",
+          "size": 124285
+        }
+      ]
+    },
+    {
       "id": "demo-001",
       "title": "示例作品：某现浇钢筋混凝土楼盖课程设计",
       "category": "building-design",

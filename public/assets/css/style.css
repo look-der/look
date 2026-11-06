@@ -215,8 +215,14 @@ a { color: inherit; text-decoration: none; }
 .file-size { color: #98a1ad; font-size: 12px; }
 .file-dl { color: var(--accent); font-weight: 600; font-size: 14px; }
 .file-dl:hover { text-decoration: underline; }
-.modal-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin: 0 0 20px; }
-.modal-gallery img { width: 100%; height: 110px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); cursor: zoom-in; }
+.modal-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 0 0 22px; }
+.gallery-item { margin: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #fff; display: flex; flex-direction: column; }
+.gallery-img { display: block; background: #f3f5f8; }
+.gallery-img img { width: 100%; height: 160px; object-fit: contain; display: block; cursor: zoom-in; }
+.gallery-cap { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 10px; border-top: 1px solid var(--line); }
+.gallery-name { font-size: 12px; color: var(--ink-soft); word-break: break-all; }
+.gallery-dl { color: var(--accent); font-weight: 600; font-size: 13px; flex: none; }
+.gallery-dl:hover { text-decoration: underline; }
 
 /* ---------- 页脚 ---------- */
 .footer { border-top: 1px solid var(--line); background: #fff; color: var(--ink-soft); font-size: 14px; }

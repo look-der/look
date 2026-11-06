@@ -97,14 +97,33 @@
   function openModal(id) {
     const p = projects.find((x) => x.id === id);
     if (!p) return;
-    const images = (p.files || []).filter((f) => f.type === 'image');
-    const gallery = images.length
-      ? `<div class="modal-gallery">${images
-          .map((f) => `<img src="${f.url}" alt="${escapeHtml(f.name)}" />`)
+    // 可视图纸/图片：图片类型，或带有 preview 的 CAD 文件（在线预览）
+    const viewables = (p.files || []).filter(
+      (f) => f.type === 'image' || (f.type === 'cad' && f.preview)
+    );
+    const gallery = viewables.length
+      ? `<div class="modal-gallery">${viewables
+          .map((f) => {
+            const src = f.preview || f.url;
+            const isCad = f.type === 'cad';
+            return `
+            <figure class="gallery-item">
+              <a class="gallery-img" href="${f.url}" target="_blank" rel="noopener" title="点击打开 / 下载原文件：${escapeHtml(f.name)}">
+                <img src="${src}" alt="${escapeHtml(f.name)}" loading="lazy" />
+              </a>
+              <figcaption class="gallery-cap">
+                <span class="gallery-name">${escapeHtml(f.name)}</span>
+                ${isCad ? `<a class="gallery-dl" href="${f.url}" target="_blank" rel="noopener" download>下载 DXF</a>` : ''}
+              </figcaption>
+            </figure>`;
+          })
           .join('')}</div>`
       : '';
-    const fileRows = (p.files || []).length
-      ? `<ul class="file-list">${p.files
+
+    // 其余文件（PDF / 文档 / 无预览的 CAD 等）以下载列表呈现
+    const downloads = (p.files || []).filter((f) => !viewables.includes(f));
+    const fileRows = downloads.length
+      ? `<ul class="file-list">${downloads
           .map((f) => {
             const m = TYPE_META[f.type] || TYPE_META.file;
             return `
@@ -116,7 +135,7 @@
             </li>`;
           })
           .join('')}</ul>`
-      : `<p class="modal-desc">该作品暂未附文件。</p>`;
+      : '';
 
     const coverBlock = p.cover
       ? `<img class="modal-cover" src="${p.cover}" alt="${escapeHtml(p.title)}" />`
